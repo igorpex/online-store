@@ -1,5 +1,5 @@
-import { Products } from '../interfaces/api';
-export const productsList: Products[] = [
+import { Product } from '../interfaces/api';
+export const productList: Product[] = [
     {
         "id": "recZkNf2kwmdBcqd0",
         "name": "accent chair",
