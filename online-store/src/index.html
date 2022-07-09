@@ -11,16 +11,79 @@
 <body>
     <header class="header">
         <div class="logo">Logo</div>
-        <div class="busket">Busket</div>
+        <div class="cart">
+            <div class="cart__img">Cart</div>
+            <div class="cart__amount"></div>
+        </div>
     </header>
-    <div class="main"></div>
+    <div class="main">
+        <form class="filters">
+            <div class="filters__search">
+                <h2 class="filters__title">Search:</h2>
+                <input class="filters__search-input" type="search" name="search" id="search">
+            </div>
+            <h2 class="filters__title">Category</h2>
+            <div class="filters__category">
+                <!-- <input id="filters__category-all" class="filters__category-input" type="checkbox" name="all-categories"> -->
+                <!-- <label class="filters__category-label" for="filters__category-all">All</label><br> -->
+            </div>
+            <h2 class="filters__title">Company</h2>
+            <div class="filters__company">
+                <!-- <input id="filters__company-all" class="filters__company-input" type="checkbox" name="company"><br>
+                <label class="filters__category-label" for=""></label><br> -->
+            </div>
+            <h2 class="filters__title">Colors</h2>
+            <div class="filters__color"></div>
+            <h2 class="filters__title">Price</h2>
+            <div class="filters__price">
+                <div id="filters__price-range" class="filters__price-range"></div>
+                <div class="filters__price-values">
+                    <div class="filters__price-value"></div>
+                    <div class="filters__price-value"></div>
+                </div>
+
+                <!-- <div id="filters__price-range" class="filters__price-range"></div> -->
+
+                <!-- <div class="filters__price-range-container">
+                    <input class="filters__price-range" type="range" min="0" step="1" max="10" value="3">
+                    <input class="filters__price-range" type="range" min="0" step="1" max="10" value="7">
+                </div> -->
+            </div>
+            <div class="filters__shipping">
+                <h2 class="filters__title">Shipping</h2>
+            </div>
+        </form>
+        <div class="products">
+            <!-- <div>
+                <h1 class="product__name">accent chair</h1>
+                <img class="product__image" src="https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160?ts=1657087345&userId=usrQMwWEPx18KgLcP&cs=48ecc59cb065f8f1">
+                <p class="product__description">Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge</p>
+            </div> -->
+        </div>
+    </div>
+
     <footer class="Footer">
         <div class="container">
             <div><a href="https://rs.school/" target="_blank" rel="noreferrer" class="rs-link">RS School</a></div>
             <div><a href="https://rollingscopes.com/" target="_blank" rel="noreferrer" class="copy-link">© Rolling Scopes School, 2022</a></div>
         </div>
     </footer>
-    <script src="./index.js"></script>
+    <template id="productTemp">
+        <div class="product">
+            <h1 class="product__name">accent chair</h1>
+            <img class="product__image">
+            <p class="product__description"></p>
+        </div>
+    </template>
+    <template id="categoryTemp">
+        <input class="filters__category-input" type="checkbox" name="">
+        <label class="filters__category-label" for=""></label><br>
+    </template>
+    <template id="companyTemp">
+        <input class="filters__company-input" type="checkbox" name="">
+        <label class="filters__company-label" for=""></label><br>
+    </template>
+    <!-- <script src="./index.js"></script> -->
 </body>
 
 </html>
