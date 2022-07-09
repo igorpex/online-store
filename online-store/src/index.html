@@ -69,11 +69,14 @@
         </div>
     </footer>
     <template id="productTemp">
-        <div class="product">
-            <h1 class="product__name">accent chair</h1>
+        <figure class="product">
             <img class="product__image">
-            <p class="product__description"></p>
-        </div>
+            <div class="product__image-footer">
+                <figcaption class="product__name"></figcaption>
+                <span class="product__price"></span>
+            </div>
+            <!-- <p class="product__description"></p> -->
+        </figure>
     </template>
     <template id="categoryTemp">
         <input class="filters__category-input" type="checkbox" name="">
@@ -83,7 +86,7 @@
         <input class="filters__company-input" type="checkbox" name="">
         <label class="filters__company-label" for=""></label><br>
     </template>
-    <!-- <script src="./index.js"></script> -->
+    <script src="./index.js"></script>
 </body>
 
 </html>

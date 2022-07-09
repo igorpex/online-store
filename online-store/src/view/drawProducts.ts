@@ -13,11 +13,12 @@ export function drawProducts(productList: Product[]) {
 
         // (productClone.querySelector('.product__image') as HTMLElement).style.backgroundImage = `url(${product.image || 'img/product_placeholder.webp'
         //     })`;
-        // (productClone.querySelector('.product__image') as HTMLImageElement).src = `${product.image || 'img/product_placeholder.webp'}`;
-        (productClone.querySelector('.product__image') as HTMLImageElement).src = 'img/product_placeholder.webp';
+        (productClone.querySelector('.product__image') as HTMLImageElement).src = `${product.image || 'img/product_placeholder.webp'}`;
+        // (productClone.querySelector('.product__image') as HTMLImageElement).src = 'img/product_placeholder.webp';
         (productClone.querySelector('.product__image') as HTMLImageElement).alt = product.name;
         (productClone.querySelector('.product__name') as HTMLElement).textContent = product.name;
-        (productClone.querySelector('.product__description') as HTMLElement).textContent = product.description;
+        (productClone.querySelector('.product__price') as HTMLElement).textContent = `$ ${product.price / 100}`;
+        // (productClone.querySelector('.product__description') as HTMLElement).textContent = product.description;
         // productsDiv.insertAdjacentElement('beforeend', newProductDiv);
         productsDiv.append(productClone);
     }

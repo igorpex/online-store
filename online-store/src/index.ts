@@ -45,6 +45,7 @@ function createAndDrawFilters(productList: Product[]) {
     localStorage.setItem('categories', JSON.stringify(Array.from(categories)));
     localStorage.setItem('companies', JSON.stringify(Array.from(companies)));
     localStorage.setItem('colors', JSON.stringify(Array.from(colors)));
+
     // localStorage.setItem('productRanges', JSON.stringify(productRanges));
 
     // drawSearchFilter();
@@ -54,7 +55,7 @@ function createAndDrawFilters(productList: Product[]) {
     drawPriceFilter(minPrice, maxPrice);
 }
 
-function addFiltersLIsteners() {
+function addFiltersListeners() {
 
     const searchContainer = document.querySelector('.filters__search') as HTMLElement;
     searchContainer.addEventListener('change', e => handleSearchFilter(e));
@@ -92,7 +93,11 @@ interface FilterParams {
     colors: string[];
 }
 
-function filterProducts(productList: Product[], filter: FilterParams) {
+interface SliderFilterParams {
+    price: { '0'?: number, '1'?: number };
+}
+
+function filterProducts(productList: Product[], filter: FilterParams, sliderfilter: SliderFilterParams) {
     let categories: any;
     let companies: any;
     let colors: any;
@@ -105,10 +110,11 @@ function filterProducts(productList: Product[], filter: FilterParams) {
     if (Array.isArray(filter.colors)) { colors = filter.colors } else { colors = new Array() };
     // const companies = Array.isArray(filter.companies) ? filter.companies : new Array();
     // const colors = Array.isArray(filter.colors) ? filter.colors : new Array();
-    console.log('categories from filterProducts after if: ', categories);
-    console.log('companies from filterProducts after if: ', companies);
-    console.log('colors from filterProducts after if: ', colors);
+    // console.log('categories from filterProducts after if: ', categories);
+    // console.log('companies from filterProducts after if: ', companies);
+    // console.log('colors from filterProducts after if: ', colors);
 
+    console.log('sliderfilter:', sliderfilter);
     let filtered = productList
         .filter(product => {
             if (categories.length === 0 || categories.includes('all')) return true;
@@ -126,21 +132,61 @@ function filterProducts(productList: Product[], filter: FilterParams) {
                 if (colors.includes(productColor)) return true
             } return false
         })
+        .filter(product => {
+            try {
+                let min = Number(sliderfilter.price['0']);
+                let max = Number(sliderfilter.price['1']);
+                if (product.price >= min && product.price <= max) {
+                    return true
+                } else return false
+            } catch {
+                return true
+            }
+        })
     return filtered;
+}
+
+function initStorage() {
+    let productRanges = getProductRanges(productList);
+
+    const categories = productRanges.categories;
+    const companies = productRanges.companies;
+    const colors: Set<string> = productRanges.colors;
+    const { minPrice, maxPrice } = productRanges.prices;
+
+    localStorage.setItem('product_categories', JSON.stringify(Array.from(categories)));
+    localStorage.setItem('product_companies', JSON.stringify(Array.from(companies)));
+    localStorage.setItem('product_colors', JSON.stringify(Array.from(colors)));
+    localStorage.setItem('product_price', JSON.stringify({ '0': minPrice, '1': maxPrice }));
+
+    localStorage.setItem('filter', JSON.stringify({ 'categories': Array.from(categories), 'companies': Array.from(companies), 'colors': Array.from(colors), prices: { '0': minPrice, '1': maxPrice } }));
+};
+
+function addStorageListener() {
+    window.addEventListener('storage', e => processStorageUpdates(e))
+};
+
+function processStorageUpdates(e: StorageEvent) {
+    console.log('storage event', e);
 }
 
 export function getFilteredProducts() {
     const products = JSON.parse(localStorage.getItem('productList')!);
     let filter = JSON.parse(localStorage.getItem('filter')!);
+    let sliderfilter = JSON.parse(localStorage.getItem('sliderfilter')!);
     // if (filter === null || filter == undefined) { filter = {} };
-    let filteredProducts = filterProducts(products, filter);
+    let filteredProducts = filterProducts(products, filter, sliderfilter);
     return filteredProducts;
 }
 
 async function start(e: Event) {
     const productList = await getProducts();
+    initStorage();
+    addStorageListener();
     createAndDrawFilters(productList);
-    addFiltersLIsteners();
+    addFiltersListeners();
+
+    // addResetListeners();
     saveAllProducts(productList);
     const filteredPoducts = getFilteredProducts();
     drawProducts(filteredPoducts);

@@ -35,10 +35,10 @@ function drawPriceFilter(minPrice: number, maxPrice: number) {
             'min': minPrice,
             'max': maxPrice
         },
-        tooltips: [
-            true,
-            true
-        ],
+        // tooltips: [
+        //     true,
+        //     true
+        // ],
     }
     );
 }
@@ -47,17 +47,19 @@ function drawCategoriesFilter(categories: Set<string>) {
     let categoriesContainer = document.querySelector('.filters__category') as HTMLElement;
     const categoryItemTemp = document.querySelector('#categoryTemp') as HTMLTemplateElement;
 
-    //draw first All companies
-    const categoryClone1 = categoryItemTemp.content.cloneNode(true) as HTMLInputElement;
-    const input1 = categoryClone1.querySelector('.filters__category-input') as HTMLInputElement;
-    input1.name = 'all';
-    input1.id = 'filters__category-input-all';
-    input1.dataset.category = 'all';
-    input1.classList.add('filters__category-input-all');
-    const label1 = categoryClone1.querySelector('.filters__category-label') as HTMLLabelElement;
-    label1.setAttribute('for', 'filters__category-input-all');
-    label1.textContent = 'All';
-    categoriesContainer!.append(categoryClone1);
+    //draw first All companies 
+    {
+        const categoryClone1 = categoryItemTemp.content.cloneNode(true) as HTMLInputElement;
+        const input1 = categoryClone1.querySelector('.filters__category-input') as HTMLInputElement;
+        input1.name = 'all';
+        input1.id = 'filters__category-input-all';
+        input1.dataset.category = 'all';
+        input1.classList.add('filters__category-input-all');
+        const label1 = categoryClone1.querySelector('.filters__category-label') as HTMLLabelElement;
+        label1.setAttribute('for', 'filters__category-input-all');
+        label1.textContent = 'All';
+        categoriesContainer!.append(categoryClone1);
+    }
 
     categories.forEach((category) => {
         const categoryClone = categoryItemTemp.content.cloneNode(true) as HTMLInputElement;
@@ -76,18 +78,22 @@ function drawCompanyFilter(companies: Set<string>) {
     const companiesContainer = document.querySelector('.filters__company') as HTMLElement;
     const companyItemTemp = document.querySelector('#companyTemp') as HTMLTemplateElement;
 
-    //draw first All option
-    const companyClone1 = companyItemTemp.content.cloneNode(true) as HTMLInputElement;
 
-    const input1 = companyClone1.querySelector('.filters__company-input') as HTMLInputElement;
-    input1.name = 'all';
-    input1.id = 'filters__company-input-all';
-    input1.dataset.company = 'all';
-    input1.classList.add('filters__company-input-all');
-    const label1 = companyClone1.querySelector('.filters__company-label') as HTMLLabelElement;
-    label1.setAttribute('for', 'filters__company-input-all');
-    label1.textContent = 'All';
-    companiesContainer!.append(companyClone1);
+    { //draw first All option
+        const companyClone1 = companyItemTemp.content.cloneNode(true) as HTMLInputElement;
+
+        const input1 = companyClone1.querySelector('.filters__company-input') as HTMLInputElement;
+        input1.name = 'all';
+        input1.id = 'filters__company-input-all';
+        input1.dataset.company = 'all';
+        input1.classList.add('filters__company-input-all');
+        const label1 = companyClone1.querySelector('.filters__company-label') as HTMLLabelElement;
+        label1.setAttribute('for', 'filters__company-input-all');
+        label1.textContent = 'All';
+        companiesContainer!.append(companyClone1);
+    }
+
+    const filteredCompanies = JSON.parse(localStorage.getItem('filter')!).companies;
 
     companies.forEach((company) => {
         const companyClone = companyItemTemp.content.cloneNode(true) as HTMLInputElement;
@@ -99,7 +105,13 @@ function drawCompanyFilter(companies: Set<string>) {
         const label = companyClone.querySelector('.filters__company-label') as HTMLLabelElement;
         label.setAttribute('for', company);
         label.textContent = company;
+        if (filteredCompanies.includes(company)) {
+            input.checked = true
+        } else {
+            input.checked = false
+        }
         companiesContainer.append(companyClone);
+
     })
 }
 
