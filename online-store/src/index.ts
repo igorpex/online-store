@@ -18,6 +18,9 @@ import { getSortedProducts } from './core-functions/sortProducts';
 import { handleSort } from './handlers/handleSort';
 import { drawSliderFilters } from './view/drawSliderFilters';
 import { handleProductsClick } from './handlers/handleProductsClick';
+import { updateCartIcon } from './view/updateCartIcon';
+import { handleResetFilters } from './handlers/handleResetFilters';
+import { handleResetAll } from './handlers/handleResetAll';
 
 
 function findProductRanges(productList: Product[]) {
@@ -71,6 +74,12 @@ function addFiltersListeners() {
     const products = document.querySelector('.products');
     products?.addEventListener('click', e => handleProductsClick(e));
 
+    const resetFiltersButton = document.querySelector('.filters__filters-reset-button');
+    resetFiltersButton?.addEventListener('click', () => handleResetFilters());
+
+    const resetAllButton = document.querySelector('.filters__all-reset-button');
+    resetAllButton?.addEventListener('click', () => handleResetAll());
+
     // const yearSlider = document.querySelector('.filters__price-range') as Slider;
     // yearSlider.noUiSlider.on('change', (values: [], handle: number) => handleYearSliderChange(values, handle));
 
@@ -95,12 +104,6 @@ function saveAllProducts(productList: Product[]) {
 // function initFilter(productRanges: ProductRanges) {
 // };
 
-function initSliderFilter(productRanges: ProductRanges) {
-    let previousPriceFilter = StorageService.getSliderFilterByName('price');
-    if (!previousPriceFilter[0] || !previousPriceFilter[1]) {
-        StorageService.setSliderFilterByName({ sliderName: 'price', values: [productRanges['prices']['minPrice'], productRanges['prices']['maxPrice']] });
-    }
-};
 
 async function start(e: Event) {
     const productList = await getProducts();
@@ -117,7 +120,7 @@ async function start(e: Event) {
 
     // Init normal filters
     // initFilter(productRanges);
-    initSliderFilter(productRanges);
+    StorageService.initSliderFilter(productRanges);
     // Init slider filters
 
 
@@ -137,6 +140,9 @@ async function start(e: Event) {
     const filteredPoducts = getFilteredProducts(); //function uses filters info from local storage
     const sortedPoducts = getSortedProducts(filteredPoducts, sortSettings);
     drawProducts(sortedPoducts);
+
+    const cart = StorageService.getCart();
+    updateCartIcon(cart);
 }
 
 window.addEventListener('DOMContentLoaded', e => start(e));

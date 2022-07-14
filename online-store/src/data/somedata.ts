@@ -1,4 +1,5 @@
-import { handlePriceSliderChange, handleSearchFilter, handleCategoryFilter, handleCompanyFilter, handleColorFilter } from '../handlers/handlers';
+import { handleSearchFilter, handleCategoryFilter, handleCompanyFilter, handleColorFilter } from '../handlers/handlers';
+import { handlePriceSliderChange } from '../handlers/handleSliders';
 let filters = [
 
     {

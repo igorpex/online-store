@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+    <link as="font" href="./fonts/roboto-flex.ttf" rel="preload" type="font/ttf">
     <title>Online-store</title>
 </head>
 
@@ -17,39 +17,29 @@
         <header class="header">
             <div class="mdc-top-app-bar__row">
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                    <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>
                     <span class="mdc-top-app-bar__title">Megashop</span>
                 </section>
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                    <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Favorite">favorite</button> -->
-                    <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">search</button> -->
-                    <span class="material-icons-outlined">shopping_cart</span>
-                    <span class="material-icons">shopping_cart_checkout</span>
-                    <span class="cart__amount">10</span>
-                    <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button--outlined" aria-label="Cart">shopping_cart</button> -->
-                    <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Cart">shopping_cart</button> -->
-
-                    <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button> -->
+                    <span class="material-icons-outlined cart-icon cart-icon_active">shopping_cart</span>
+                    <span class="material-icons cart-icon-checkout">shopping_cart_checkout</span>
+                    <span class="cart__amount cart-counter"></span>
                 </section>
             </div>
-            <!-- <div class="cart">
-                <div class="cart__img">Cart</div>
-                <div class="cart__amount"></div>
-            </div> -->
         </header>
+
         <div class="filters">
             <div class="filters__search-container">
-                <h2 class="mdc-typography--subtitle1 filters__title">Search</h2>
+                <!-- <h2 class="mdc-typography--subtitle1 filters__title">Search</h2> -->
                 <div class="filters__search">
                     <!-- <h2 class="mdc-typography--subtitle1 filters__title">Search:</h2> -->
-                    <label class="mdc-text-field mdc-text-field--filled mdc-text-field--filled mdc-text-field--with-leading-icon mdc-text-field--with-trailing-icon">
+                    <label class="mdc-text-field  mdc-text-field--outlined mdc-text-field--with-leading-icon mdc-text-field--with-trailing-icon">
 
-                        <span class="mdc-text-field__ripple"></span>
-                        <span class="mdc-floating-label" id="my-label-id"></span>
-                        <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading">search</i>
-                        <input class="mdc-text-field__input filters__search-input" type="text" aria-labelledby="my-label-id">
-                        <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing filters__search-clear" tabindex="0" role="button">clear</i>
-                        <span class="mdc-line-ripple"></span>
+                        <!-- <span class="mdc-text-field__ripple"></span> -->
+                        <span class="mdc-floating-label" id="my-label-id">Search</span>
+                        <i class="material-icons mdc-text-field__icon filters__search-icon">search</i>
+                        <input class="mdc-text-field__input mdc-text-field--filled filters__search-input" autofocus autocomplete="off" type="text" aria-labelledby="my-label-id" placeholder="Search">
+                        <i class="material-icons mdc-text-field__icon filters__search-clear" tabindex="0" role="button">clear</i>
+                        <!-- <span class="mdc-line-ripple"></span> -->
                     </label>
                     <!-- <input class="filters__search-input" type="search" name="search" id="search"> -->
                 </div>
@@ -78,14 +68,17 @@
                     <div id="filters__price-range" class="filters__price-range"></div>
                 </div>
             </div>
-            <!-- 
-            <div class="filters__shipping">
-                <h2 class="mdc-typography--subtitle1 filters__title">Shipping</h2>
-            </div> -->
+            <div class="filters__filters-reset">
+                <button class="filters__filters-reset-button">Reset filters</button>
+            </div>
+            <div class="filters__all-reset">
+                <button class="filters__all-reset-button">Reset all</button>
+            </div>
         </div>
 
         <div class="main">
             <div class="sort">
+                <h2 class="mdc-typography--subtitle1 filters__title">Sort</h2>
                 <div class="sort__buttons">
                     <button class="sort__button name_asc" data-sort-type="name" data-sort-direction="asc">By Name from A to Z</button>
                     <button class="sort__button name_desc" data-sort-type="name" data-sort-direction="desc">By Name from Z to A</button>
@@ -146,8 +139,8 @@
                         </div>
                         <div class="mdc-card__action-icons"> -->
                             <!-- <span class="material-icons">add_shopping_cart</span> -->
-                            <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon" title="Share">add_shopping_cart</button>
-                            <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon" title="Share">remove_shopping_cart</button>
+                            <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon product__cart-icon-add product__cart-icon-add_active" title="Add to cart">add_shopping_cart</button>
+                            <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon product__cart-icon-remove" title="Remove from cart">remove_shopping_cart</button>
                             <!-- <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon" title="Share">share</button> -->
                             <!-- <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon" title="More options">more_vert</button> -->
                         </div>
@@ -205,7 +198,12 @@
             </template> -->
         </div>
     </div>
-
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <!-- <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script> -->
+    <script>
+        const textField = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
+        const helperText = new mdc.textField.MDCTextFieldHelperText(document.querySelector('.mdc-text-field-helper-text'));
+    </script>
 </body>
 
 </html>
