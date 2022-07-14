@@ -1,4 +1,5 @@
 export interface Product {
+    [key: string]: string | boolean | string[] | number | undefined;
     "id": string;
     "name": string;
     "price": number;
@@ -11,4 +12,7 @@ export interface Product {
     "category": string;
     "shipping"?: boolean;
     "featured"?: boolean;
+    "year": number;
+    "count": number;
+    "popular"?: boolean;
 }
