@@ -3,72 +3,140 @@
     --fixed-width: 620px;
 }
 
-*,
-::after,
-::before {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+
+/* ::after, */
+/* ::before  */
+
+/* body {
     max-width: var(--max-width);
     width: 95vw;
     margin-left: auto;
     margin-right: auto;
-}
+} */
 
-.header {
-    display: flex;
-    justify-content: space-between;
-}
-
-.logo {
-    font-size: 2rem;
-}
-
-.cart__img {
-    font-size: 2rem;
-}
-
-.main {
-    display: flex;
+.container {
+    max-width: var(--max-width);
+    width: 95vw;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .filters {
-    margin-top: 100px;
-    width: fit-content;
-    min-width: 200px;
-    height: 100vh;
-    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    /* margin-top: 100px; */
+    /* width: 100%; */
+    /* min-width: 200px; */
+    /* height: 100vh; */
 }
 
-.filters__search {
-    width: 100%;
-    /* border: 1px solid; */
-    border-radius: 4px;
+
+
+.filters__color {
+    width: fit-content
 }
+
+.filters__search-container {
+    width: 200px;
+}
+
+.filters__color-container {
+    width: fit-content;
+}
+
+.filters__price-container {
+    width: 250px;
+}
+
+.filters__category-container,
+.filters__company-container,
+.filters__color-container,
+.filters__price-container,
+.filters__search-container {
+    border: 1px solid green;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px;
+    height: fit-content;
+}
+
+.filters__search-clear {
+    display: none;
+}
+
+.filters__category {
+    display: flex;
+    /* flex-direction: column; */
+}
+
+.filters__company {
+    display: flex;
+    /* flex-direction: column; */
+}
+
 
 .fiter__colors-input {
     position: absolute;
     opacity: 0;
 }
 
-.fiter__colors-input {
+/* .fiter__colors-input {
     background-color: green
-}
+} */
 
 .filters__colors-button {
-    width: 1rem;
-    height: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
     padding: 3px;
     /* width: fit-content; */
     margin: 8px;
+    border: none
 }
 
 .filters__colors-button_active {
     transform: rotate(-135deg);
 }
+
+.filters__price-values {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+#filters__price-range {
+    height: 10px;
+}
+
+#filters__price-range .noUi-connect {
+    background: #c0392b;
+}
+
+#filters__price-range .noUi-handle {
+    height: 18px;
+    width: 18px;
+    top: -5px;
+    right: -9px;
+    border-radius: 9px;
+}
+
+#filters__price-range,
+#filters__price-range .noUi-handle {
+    box-shadow: none;
+}
+
+/* Hide markers on slider handles */
+#filters__price-range .noUi-handle::before,
+#filters__price-range .noUi-handle::after {
+    display: none;
+}
+
 
 .products {
     display: flex;
@@ -80,37 +148,48 @@ body {
 
 .product {
     width: 30%;
-    /* margin: 10px; */
-    margin-left: 15px;
-    min-width: 279px;
-    height: 200px;
+    /* height: 200px; */
+    /* margin-left: 15px; */
+    /* min-width: 279px; */
+    /* height: 300px; */
 }
+
+.product_active {
+    background-color: #c0392b;
+}
+
+/* .mdc-card__media {
+    height: 300px;
+} */
 
 .product__image {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    height: 175px;
-    width: 100%;
-    min-width: 279px;
-    /* display: block; */
-    object-fit: cover;
+    /* border: 1px solid #ddd; */
+    /* border-radius: 4px; */
+    /* padding: 5px; */
+    /* height: 175px; */
+    /* width: 100%; */
+    /* min-width: 279px; */
+    /* object-position: center bottom; */
+    /* object-fit: cover; */
+    /* object-fit: fill; */
+    /* object-fit: contain; */
+    /* object-fit: scale-down; */
 }
 
-.product__image-footer {
+/* .product__image {
+    width: 344px;
+    height: 194px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+} */
+
+/* .product__image-footer {
     display: flex;
-    /* align-items: stretch; */
     justify-content: space-between
-}
+} */
 
-.product__name {
-    display: inline;
-    /* margin-right: auto; */
-}
-
-.product__price {
-    /* margin-left: auto; */
-}
 
 /* .filters__price-range-container {
     position: relative;
