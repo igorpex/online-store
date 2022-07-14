@@ -10,6 +10,10 @@ export interface Slider extends HTMLDivElement {
     noUiSlider: { on: Function };
 }
 
+export interface SetSlider extends HTMLDivElement {
+    noUiSlider: { set: Function };
+}
+
 
 export interface ProductRanges {
     categories: string[];

@@ -31,7 +31,7 @@ export class StorageService {
     }
 
     static resetFilter() {
-        localStorage.setItem("filters", JSON.stringify({}));
+        localStorage.setItem("filter", JSON.stringify({}));
     }
 
     static getSliderFilter() {
@@ -65,7 +65,24 @@ export class StorageService {
     }
 
     static resetSliderFilter() {
-        localStorage.setItem("filters", JSON.stringify({}));
+        localStorage.setItem("sliderFilter", JSON.stringify({}));
+    }
+
+    static initSliderFilter(productRanges: ProductRanges) {
+        let previousPriceFilter = StorageService.getSliderFilterByName('price');
+        if (!previousPriceFilter[0] || !previousPriceFilter[1]) {
+            StorageService.setSliderFilterByName({ sliderName: 'price', values: [productRanges['prices']['minPrice'], productRanges['prices']['maxPrice']] });
+        }
+    };
+
+    static getProductRanges() {
+        try {
+            let productRanges = JSON.parse(localStorage.getItem('productRanges')!);
+            return productRanges ? productRanges : {}
+        } catch {
+            return {}
+        }
+
     }
 
     static setProductRanges(productRanges: ProductRanges) {
@@ -94,8 +111,6 @@ export class StorageService {
     static setSearchFilter(value: string) {
         localStorage.setItem('searchFilter', JSON.stringify(value));
     }
-
-
 
     static getCart() {
         let cart;
@@ -143,5 +158,4 @@ export class StorageService {
     static resetSortSettings() {
         localStorage.setItem('sortSettings', JSON.stringify({ type: 'name', direction: 'asc' }));
     }
-
 }
