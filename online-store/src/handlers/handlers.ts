@@ -1,5 +1,8 @@
 import { drawProducts } from '../view/drawProducts';
-import { getFilteredProducts } from '../index';
+import { getFilteredProducts } from '../core-functions/filterProducts';
+import { StorageService } from '../core-functions/storage';
+import { handleSearchFilter } from './handleSearch';
+import { handleColorFilter } from './handleColor'
 
 function handlePriceFilterNormal() {
     const sliders = document.querySelectorAll('.filters__price-range');
@@ -23,17 +26,21 @@ function handlePriceFilterNormal() {
     });
 }
 
-function handleSearchFilter(e: Event) {
-    const sliders = document.querySelectorAll('.filters__price-range');
-    console.log('handleSearchFilter: event: ', e);
+interface FilterChange {
+    changedField: string;
+    item: string;
+    value: boolean;
 }
 
 function updateFilterState(changedField: string, item: string, value: boolean) {
+    // check filter exists
     let filter = JSON.parse(localStorage.getItem('filter')!);
     if (filter === null || filter == undefined) { filter = {} };
+    // check array for this filtering category exists
     if (!Array.isArray(filter[changedField])) {
         filter[changedField] = [];
     }
+    // if element does not exist in filter - add it
     if (filter[changedField].length === 0 || !filter[changedField].includes(item) && value) {
         filter[changedField].push(item);
     } else if (filter[changedField].includes(item) && !value) {
@@ -41,12 +48,6 @@ function updateFilterState(changedField: string, item: string, value: boolean) {
         // filter[changedField] = filter[changedField].filter((element: string) => element !== value);
     }
     localStorage.setItem('filter', JSON.stringify(filter));
-}
-
-interface FilterChange {
-    changedField: string;
-    item: string;
-    value: boolean;
 }
 
 function handleFilterChange({ changedField, item, value }: FilterChange) {
@@ -73,90 +74,7 @@ function handleCompanyFilter(e: Event) {
     console.log("is checked: ", checked);
 }
 
-function updateColorFilterView() {
-    //update colors filter icons
-    let filterColors = JSON.parse(localStorage.getItem('filter')!)['colors'];
-    let allColorsBtn = document.querySelector('.filters__colors-button-all') as HTMLButtonElement
-    if (filterColors.includes('all')) {
-        allColorsBtn.textContent = "All V";
-    } else { allColorsBtn.textContent = "All" };
-    document.querySelectorAll('.filters__colors-button').forEach(element => {
-        // filters__colors-button_active
-        const elementColor = (element as HTMLButtonElement).dataset.color
-        if (filterColors.includes(elementColor)) {
-            element.classList.add('filters__colors-button_active');
-        } else {
-            element.classList.remove('filters__colors-button_active')
-        }
-    })
-}
-
-function handleColorFilter(e: Event) {
-    console.log('handleCategoryFilter: event target: ', e.target);
-    const clickedColor = (e.target as HTMLButtonElement).dataset.color!;
-    console.log('clicked color: ', clickedColor);
-
-    //update filter state
-    let filter = JSON.parse(localStorage.getItem('filter')!);
-    if (filter === null || filter == undefined) { filter = {} };
-    if (!Array.isArray(filter['colors'])) {
-        filter['colors'] = [];
-    }
-    if (filter['colors'].length === 0 || !filter['colors'].includes(clickedColor)) {
-        filter['colors'].push(clickedColor);
-    } else if (filter['colors'].includes(clickedColor)) {
-        filter['colors'] = filter['colors'].filter((element: string) => element !== clickedColor);
-        // filter[changedField] = filter[changedField].filter((element: string) => element !== value);
-    }
-    localStorage.setItem('filter', JSON.stringify(filter));
-
-    //update colors filter buttons
-    updateColorFilterView()
-
-    //get fltered products
-    const filteredProducts = getFilteredProducts();
-    // drawFilters()
-    console.log('filteredProducts Length:', filteredProducts.length);
-    // drawProducts()
-    drawProducts(filteredProducts);
-
-}
-
-
-interface SliderFilterChange {
-    changedField: string;
-    values: number[];
-    handle: number;
-}
-
-function updateSliderFiltersState({ changedField, values, handle }: SliderFilterChange) {
-    console.log('updateFilterState:changedField: ', changedField, 'values: ', values, 'handle: ', handle);
-    let sliderfilter = JSON.parse(localStorage.getItem('sliderFilters')!);
-    // Check filter exist in local storage, if not, make empty object.
-    if (sliderfilter === null || sliderfilter === undefined) { sliderfilter = {} };
-    console.log('sliderfilter after it is undefined:', sliderfilter);
-    sliderfilter[changedField] = values;
-    localStorage.setItem('sliderfilter', JSON.stringify(sliderfilter));
-}
-
-function handleSliderFiltersChange({ changedField, values, handle }: SliderFilterChange) {
-    updateSliderFiltersState({ changedField, values, handle });
-    const filteredProducts = getFilteredProducts();
-    // drawFilters()
-    console.log('filteredProducts Length:', filteredProducts.length);
-    drawProducts(filteredProducts);
-}
-
-function handlePriceSliderChange(values: [], handle: number) {
-    const valuesDivs = document.querySelectorAll('.filters__price-value');
-    // console.log('values change:', values);
-    // console.log('handle change:', handle);
-    valuesDivs[handle].innerHTML = `${values[handle] / 100}`;
-    handleSliderFiltersChange({ changedField: 'price', values, handle })
-}
-
 export {
-    handlePriceSliderChange,
     handleSearchFilter,
     handleCategoryFilter,
     handleCompanyFilter,
