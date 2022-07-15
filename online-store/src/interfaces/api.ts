@@ -6,7 +6,7 @@ export interface Product {
     // [key: number]: string;
     // [price: number]: string;
     "image": string;
-    "colors": string[];
+    "colors": Array<string>;
     "company": string;
     "description": string;
     "category": string;
