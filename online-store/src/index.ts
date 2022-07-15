@@ -21,6 +21,7 @@ import { handleProductsClick } from './handlers/handleProductsClick';
 import { updateCartIcon } from './view/updateCartIcon';
 import { handleResetFilters } from './handlers/handleResetFilters';
 import { handleResetAll } from './handlers/handleResetAll';
+import { updateSort } from './view/updateSort';
 
 
 function findProductRanges(productList: Product[]) {
@@ -129,8 +130,10 @@ async function start(e: Event) {
     const sliderFilter = StorageService.getSliderFilter();
     drawSliderFilters(productRanges, sliderFilter);
     // draw filters (sync view with filtered settings)
+    updateSort();
     updateFilters();
     addFiltersListeners();
+
 
     // addResetListeners();
 

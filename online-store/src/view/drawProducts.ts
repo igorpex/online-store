@@ -3,6 +3,10 @@ import { Product } from '../interfaces/api';
 
 export function drawProducts(productList: Product[]) {
     const productsDiv = document.querySelector('.products') as HTMLElement;
+    if (!productList || productList.length === 0) {
+        productsDiv.innerText = "Извините, совпадений не обнаружено";
+        return
+    };
     let cart = StorageService.getCart();
     console.log('Cart:', cart)
     productsDiv.innerHTML = "";

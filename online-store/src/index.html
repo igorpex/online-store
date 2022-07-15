@@ -68,18 +68,17 @@
                     <div id="filters__price-range" class="filters__price-range"></div>
                 </div>
             </div>
-            <div class="filters__filters-reset">
+            <div class="filters__reset-container">
+                <h2 class="mdc-typography--subtitle1 filters__title">Reset</h2>
                 <button class="filters__filters-reset-button">Reset filters</button>
-            </div>
-            <div class="filters__all-reset">
                 <button class="filters__all-reset-button">Reset all</button>
             </div>
         </div>
 
         <div class="main">
             <div class="sort">
-                <h2 class="mdc-typography--subtitle1 filters__title">Sort</h2>
                 <div class="sort__buttons">
+                    <h2 class="mdc-typography--subtitle1 filters__title">Sort</h2>
                     <button class="sort__button name_asc" data-sort-type="name" data-sort-direction="asc">By Name from A to Z</button>
                     <button class="sort__button name_desc" data-sort-type="name" data-sort-direction="desc">By Name from Z to A</button>
                     <button class="sort__button year_asc" data-sort-type="year" data-sort-direction="asc">By Year Ascending</button>
@@ -148,7 +147,7 @@
                 </div>
             </template>
             <template id="categoryTemp">
-                <div class="mdc-form-field mdc-form-field--nowrap">
+                <!-- <div class="mdc-form-field mdc-form-field--nowrap">
                     <div class="mdc-checkbox">
                         <input type="checkbox" class="filters__category-input mdc-checkbox__native-control" id="" />
                         <div class="mdc-checkbox__background">
@@ -160,16 +159,14 @@
                         <div class="mdc-checkbox__ripple"></div>
                     </div>
                     <label class="filters__category-label" for=""></label>
-                    <!-- <input id="filters__category-all" class="filters__category-input mdc-checkbox__native-control" type="checkbox" name="all-categories">
-                    <label class="filters__category-label" for="filters__category-all">TEST</label><br> -->
-                </div>
-                <!-- <input class="filters__category-input" type="checkbox" name="">
-                <label class="filters__category-label" for=""></label><br> -->
+                </div> -->
+                <input class="filters__category-input" type="checkbox" name="">
+                <label class="filters__category-label" for=""></label><br>
             </template>
 
 
-            <template id="companyTemp">
-                <div class="mdc-form-field mdc-form-field--nowrap">
+            <template id="companyTempMaterial">
+                <!-- <div class="mdc-form-field mdc-form-field--nowrap">
                     <div class="mdc-checkbox">
                         <input type="checkbox" class="filters__company-input mdc-checkbox__native-control" id="" />
                         <div class="mdc-checkbox__background">
@@ -180,11 +177,14 @@
                         </div>
                         <div class="mdc-checkbox__ripple"></div>
                     </div>
-                    <label class="filters__company-label" for="checkbox-1"></label>
-                    <!-- <input id="filters__category-all" class="filters__category-input mdc-checkbox__native-control" type="checkbox" name="all-categories">
-                    <label class="filters__category-label" for="filters__category-all">TEST</label><br> -->
-                </div>
+                    <label class="filters__company-label" for=""></label>
+                </div> -->
             </template>
+            <template id="companyTemp">
+                <input class="filters__company-input" type="checkbox" name="">
+                <label class="filters__company-label" for=""></label><br>
+            </template>
+
             <template id="colorChipsTemp">
                 <span class="mdc-evolution-chip-set" role="listbox" aria-orientation="horizontal" aria-multiselectable="true">
                     <span class="mdc-evolution-chip-set__chips" role="presentation">
@@ -192,10 +192,7 @@
                     </span>
                 </span>
             </template>
-            <!-- <template id="companyTemp">
-                <input class="filters__company-input" type="checkbox" name="">
-                <label class="filters__company-label" for=""></label><br>
-            </template> -->
+
         </div>
     </div>
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>

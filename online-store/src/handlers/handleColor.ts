@@ -5,9 +5,10 @@ import { getSortedProducts } from '../core-functions/sortProducts';
 import { updateColorFilter } from '../view/filters/updateColorFilter';
 
 export function handleColorFilter(e: Event) {
-    console.log('handleCategoryFilter: event target: ', e.target);
+    if (!(e.target as HTMLElement).classList.contains('filters__colors-button')) return;
+    // console.log('handleCategoryFilter: event target: ', e.target);
     const clickedColor = (e.target as HTMLButtonElement).dataset.color!;
-    console.log('clicked color: ', clickedColor);
+    // console.log('clicked color: ', clickedColor);
 
     //update filter state
     const filter = StorageService.getFilter();

@@ -13,12 +13,9 @@
 /* ::after, */
 /* ::before  */
 
-/* body {
-    max-width: var(--max-width);
-    width: 95vw;
-    margin-left: auto;
-    margin-right: auto;
-} */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
 
 .container {
     max-width: var(--max-width);
@@ -29,11 +26,13 @@
 
 
 .cart-icon-checkout {
-    display: none
+    display: none;
 }
 
 .cart-icon-checkout.cart-icon_checkout_active {
-    display: inline
+    display: inline;
+    /* background-color: #62c02b; */
+    color: #62c02b;
 }
 
 .cart-icon {
@@ -41,7 +40,11 @@
 }
 
 .cart-icon.cart-icon_active {
-    display: inline
+    display: inline;
+}
+
+.cart-counter {
+    color: #62c02b;
 }
 
 .filters {
@@ -114,11 +117,12 @@
 .filters__company-container,
 .filters__color-container,
 .filters__price-container,
-.filters__search-container {
+.filters__search-container,
+.filters__reset-container {
     border: 1px solid green;
     border-radius: 4px;
-    padding: 10px;
-    margin: 10px;
+    padding: 5px;
+    margin: 5px;
     height: fit-content;
 }
 
@@ -129,6 +133,65 @@
 .filters__category {
     display: flex;
     /* flex-direction: column; */
+}
+
+/* .check-with-label:checked + .label-for-check {
+    font-weight: bold;
+  } */
+
+.filters__category-label,
+.filters__company-label {
+    display: inline-block;
+    background: #f2f2f2;
+    border-radius: 0.7rem;
+    padding: 0.4rem 0.6rem;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 500mx ease;
+    height: 2rem;
+    font-size: 0.8rem;
+    vertical-align: middle;
+    white-space: nowrap;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.material-icons-outlined {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.filters__category-label:hover,
+.filters__company-label:hover {
+    border-color: silver;
+    transform: scale(1.1);
+}
+
+.filters__category-input,
+.filters__company-input {
+    display: none
+}
+
+.filters__category-input:checked+.filters__category-label,
+.filters__company-input:checked+.filters__company-label {
+    background-color: lightgreen;
+    border-color: silver;
+    /* font-weight: bold; */
+    /* transform: scale(1.1); */
+    /* background-color: #c0392b; */
+    /* color: #c0392b; */
+}
+
+.filters__colors-button,
+.filters__filters-reset-button,
+.filters__all-reset-button,
+.sort__button,
+.noUi-touch-area {
+    cursor: pointer;
 }
 
 .filters__company {
@@ -192,6 +255,38 @@
     display: none;
 }
 
+
+.sort__button {
+    display: inline-block;
+    background: #f2f2f2;
+    border-radius: 0.7rem;
+    padding: 0.4rem 0.6rem;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 500mx ease;
+    height: 2rem;
+    font-size: 0.8rem;
+    vertical-align: middle;
+    white-space: nowrap;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.sort__button:hover {
+    border-color: silver;
+    transform: scale(1.1);
+}
+
+
+.sort__button_active {
+    background-color: lightgreen;
+    border-color: silver;
+}
+
+
 .sort {
     margin: 10px;
 }
@@ -199,7 +294,41 @@
 .sort__buttons {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
     gap: 10px
+}
+
+.filters__filters-reset-button,
+.filters__all-reset-button {
+    display: inline-block;
+    background: #f2f2f2;
+    border-radius: 0.7rem;
+    padding: 0.4rem 0.6rem;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 500mx ease;
+    height: 2rem;
+    font-size: 0.8rem;
+    vertical-align: middle;
+    white-space: nowrap;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.filters__filters-reset-button:hover {
+    border-color: silver;
+    transform: scale(1.1);
+    background-color: yellow;
+}
+
+.filters__all-reset-button:hover {
+    border-color: silver;
+    transform: scale(1.1);
+    background-color: red;
 }
 
 .products {
