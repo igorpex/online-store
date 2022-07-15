@@ -73,6 +73,16 @@ export class StorageService {
         if (!previousPriceFilter[0] || !previousPriceFilter[1]) {
             StorageService.setSliderFilterByName({ sliderName: 'price', values: [productRanges['prices']['minPrice'], productRanges['prices']['maxPrice']] });
         }
+
+        let previousCountFilter = StorageService.getSliderFilterByName('count');
+        if (!previousCountFilter[0] || !previousCountFilter[1]) {
+            StorageService.setSliderFilterByName({ sliderName: 'count', values: [productRanges['counts']['minCount'], productRanges['counts']['maxCount']] });
+        }
+
+        let previousYearFilter = StorageService.getSliderFilterByName('year');
+        if (!previousYearFilter[0] || !previousYearFilter[1]) {
+            StorageService.setSliderFilterByName({ sliderName: 'year', values: [productRanges['years']['minYear'], productRanges['years']['maxYear']] });
+        }
     };
 
     static getProductRanges() {

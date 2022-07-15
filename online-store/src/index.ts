@@ -8,7 +8,7 @@ import { drawProducts } from './view/drawProducts';
 import { drawColorFilter, drawCategoriesFilter, drawCompanyFilter, drawFilters } from './view/drawFilters';
 import { Filter, ProductRanges, Slider } from './interfaces/internal';
 import { handleSearchFilter, handleCategoryFilter, handleCompanyFilter, handleColorFilter } from './handlers/handlers';
-import { handlePriceSliderChange } from './handlers/handleSliders';
+import { handleCountSliderChange, handlePriceSliderChange, handleYearSliderChange } from './handlers/handleSliders';
 import { productList } from './data/products';
 import { StorageService } from './core-functions/storage';
 import { updateFilters } from './view/updateFilters';
@@ -26,8 +26,14 @@ import { updateSort } from './view/updateSort';
 
 function findProductRanges(productList: Product[]) {
     const prices = productList.map(product => product.price);
+    const counts = productList.map(product => product.count);
+    const years = productList.map(product => product.year);
     let minPrice = Math.min(...prices);
     let maxPrice = Math.max(...prices);
+    let minCount = Math.min(...counts);
+    let maxCount = Math.max(...counts);
+    let minYear = Math.min(...years);
+    let maxYear = Math.max(...years);
     console.log('minPrice: ', minPrice);
     console.log('maxPrice: ', maxPrice);
 
@@ -46,6 +52,8 @@ function findProductRanges(productList: Product[]) {
         companies: Array.from(companies),
         colors: Array.from(colors),
         prices: { minPrice, maxPrice },
+        counts: { minCount, maxCount },
+        years: { minYear, maxYear }
     }
 }
 
@@ -53,6 +61,9 @@ function addFiltersListeners() {
 
     const searchContainer = document.querySelector('.filters__search') as HTMLElement;
     searchContainer.addEventListener('input', e => handleSearchFilter(e));
+
+    let clearIcon = document.querySelector('.filters__search-clear');
+    clearIcon?.addEventListener('click', e => handleSearchFilter(e));
 
     const categoryContainer = document.querySelector('.filters__category') as HTMLElement;
     categoryContainer.addEventListener('change', e => handleCategoryFilter(e));
@@ -66,8 +77,13 @@ function addFiltersListeners() {
     const priceSlider = document.querySelector('.filters__price-range') as Slider;
     priceSlider.noUiSlider.on('change', (values: [], handle: number) => handlePriceSliderChange(values, handle));
 
-    let clearIcon = document.querySelector('.filters__search-clear');
-    clearIcon?.addEventListener('click', e => handleSearchFilter(e));
+    const countSlider = document.querySelector('.filters__count-range') as Slider;
+    countSlider.noUiSlider.on('change', (values: [], handle: number) => handleCountSliderChange(values, handle));
+
+    const yearSlider = document.querySelector('.filters__year-range') as Slider;
+    yearSlider.noUiSlider.on('change', (values: [], handle: number) => handleYearSliderChange(values, handle));
+
+
 
     const sortButtons = document.querySelectorAll('.sort__buttons');
     sortButtons.forEach(button => button.addEventListener('click', e => handleSort(e)));

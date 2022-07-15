@@ -42,6 +42,22 @@ function handlePriceSliderChange(values: [], handle: number) {
     handleSliderFiltersChange({ sliderName: 'price', values, handle })
 }
 
+function handleCountSliderChange(values: [], handle: number) {
+    const valuesDivs = document.querySelectorAll('.filters__count-value');
+    // console.log('values change:', values);
+    // console.log('handle change:', handle);
+    valuesDivs[handle].innerHTML = `${Math.trunc(values[handle])}`;
+    handleSliderFiltersChange({ sliderName: 'count', values, handle })
+}
+
+function handleYearSliderChange(values: [], handle: number) {
+    const valuesDivs = document.querySelectorAll('.filters__year-value');
+    // console.log('values change:', values);
+    // console.log('handle change:', handle);
+    valuesDivs[handle].innerHTML = `${Math.trunc(values[handle])}`;
+    handleSliderFiltersChange({ sliderName: 'year', values, handle })
+}
+
 export {
-    handlePriceSliderChange,
+    handlePriceSliderChange, handleCountSliderChange, handleYearSliderChange
 }

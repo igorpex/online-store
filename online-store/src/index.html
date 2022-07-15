@@ -8,7 +8,10 @@
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
-    <link as="font" href="./fonts/roboto-flex.ttf" rel="preload" type="font/ttf">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <!-- <link as="font" href="./fonts/roboto-flex.ttf" rel="preload" type="font/ttf"> -->
     <title>Online-store</title>
 </head>
 
@@ -67,6 +70,28 @@
                     </div>
                     <div id="filters__price-range" class="filters__price-range"></div>
                 </div>
+
+
+            </div>
+            <div class="filters__year-container">
+                <h2 class="mdc-typography--subtitle1 filters__title">Year</h2>
+                <div class="filters__year">
+                    <div class="filters__year-values">
+                        <div class="filters__year-value"></div>
+                        <div class="filters__year-value"></div>
+                    </div>
+                    <div id="filters__year-range" class="filters__year-range"></div>
+                </div>
+            </div>
+            <div class="filters__count-container">
+                <h2 class="mdc-typography--subtitle1 filters__title">Count</h2>
+                <div class="filters__count">
+                    <div class="filters__count-values">
+                        <div class="filters__count-value"></div>
+                        <div class="filters__count-value"></div>
+                    </div>
+                    <div id="filters__count-range" class="filters__count-range"></div>
+                </div>
             </div>
             <div class="filters__reset-container">
                 <h2 class="mdc-typography--subtitle1 filters__title">Reset</h2>
@@ -91,11 +116,14 @@
             </div>
         </div>
 
-        <footer class="Footer">
-            <div class="container">
+        <footer class="footer">
+            <a href="https://github.com/igorpex">My GitHub</a>
+            <span>2022</span>
+            <a href="https://rs.school/js/"><img class="logo" src="https://rs.school/images/rs_school_js.svg" alt="logo"> </a>
+            <!-- <div class="container">
                 <div><a href="https://rs.school/" target="_blank" rel="noreferrer" class="rs-link">RS School</a></div>
                 <div><a href="https://rollingscopes.com/" target="_blank" rel="noreferrer" class="copy-link">© Rolling Scopes School, 2022</a></div>
-            </div>
+            </div> -->
         </footer>
         <div class="templates">
             <template id="productTemp">

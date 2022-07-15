@@ -20,6 +20,8 @@ export interface ProductRanges {
     companies: string[];
     colors: string[];
     prices: { minPrice: number, maxPrice: number };
+    counts: { minCount: number, maxCount: number };
+    years: { minYear: number, maxYear: number };
 }
 
 export interface SortSettings {
