@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <!-- <link as="font" href="./fonts/roboto-flex.ttf" rel="preload" type="font/ttf"> -->
     <title>Online-store</title>
 </head>
 
@@ -20,7 +19,8 @@
         <header class="header">
             <div class="mdc-top-app-bar__row">
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                    <span class="mdc-top-app-bar__title">Megashop</span>
+                    <img class="logo" src="./img/armchair-icon.png" alt="logo">
+                    <span class="mdc-top-app-bar__title">Modern Furniture</span>
                 </section>
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
                     <span class="material-icons-outlined cart-icon cart-icon_active">shopping_cart</span>
@@ -32,19 +32,14 @@
         <div class="main">
             <div class="filters">
                 <div class="filters__container filters__search-container">
-                    <!-- <h2 class="mdc-typography--subtitle1 filters__title">Search</h2> -->
                     <div class="filters__search">
-                        <!-- <h2 class="mdc-typography--subtitle1 filters__title">Search:</h2> -->
+                        <h2 class="mdc-typography--subtitle1 filters__title">Search</h2>
                         <label class="mdc-text-field  mdc-text-field--outlined mdc-text-field--with-leading-icon mdc-text-field--with-trailing-icon">
-
-                            <!-- <span class="mdc-text-field__ripple"></span> -->
-                            <span class="mdc-floating-label" id="my-label-id">Search</span>
+                            <span class="mdc-floating-label" id="my-label-id"></span>
                             <i class="material-icons mdc-text-field__icon filters__search-icon">search</i>
                             <input class="mdc-text-field__input mdc-text-field--filled filters__search-input" autofocus autocomplete="off" type="text" aria-labelledby="my-label-id" placeholder="Search">
                             <i class="material-icons mdc-text-field__icon filters__search-clear" tabindex="0" role="button">clear</i>
-                            <!-- <span class="mdc-line-ripple"></span> -->
                         </label>
-                        <!-- <input class="filters__search-input" type="search" name="search" id="search"> -->
                     </div>
                 </div>
                 <div class="filters__container filters__category-container">
@@ -125,15 +120,10 @@
             <div class="products">
             </div>
         </div>
-
         <footer class="footer">
             <a href="https://github.com/igorpex">My GitHub</a>
             <span>2022</span>
-            <a href="https://rs.school/js/"><img class="logo" src="https://rs.school/images/rs_school_js.svg" alt="logo"> </a>
-            <!-- <div class="container">
-                <div><a href="https://rs.school/" target="_blank" rel="noreferrer" class="rs-link">RS School</a></div>
-                <div><a href="https://rollingscopes.com/" target="_blank" rel="noreferrer" class="copy-link">© Rolling Scopes School, 2022</a></div>
-            </div> -->
+            <a href="https://rs.school/js/" target="_blank" rel="noreferrer" class="rs-link"><img class="logo" src="./img/rs_school_js.svg" alt="logo"> </a>
         </footer>
         <div class="templates">
             <template id="productTemp">
@@ -143,7 +133,6 @@
                         <figcaption class="product__name"></figcaption>
                         <span class="product__price"></span>
                     </div>
-                    <!-- <p class="product__description"></p> -->
                 </figure>
 
             </template>
@@ -152,7 +141,6 @@
                     <div class="mdc-card__primary-action">
                         <div class="my-card__media mdc-card__media mdc-card__media--16-9">
                             <div class="mdc-card__media-content">
-                                <!-- <img class="product__image"> -->
                             </div>
 
                             <div class="mdc-card__ripple"></div>
@@ -171,43 +159,15 @@
                                 <div class="product__popular"></div>
                             </div>
                         </div>
-                        <!-- ... additional primary action content ... -->
                         <div class="mdc-card__actions">
-
-                            <!-- <div class="mdc-card__action-buttons">
-                            <button class="mdc-button mdc-card__action mdc-card__action--button">
-                                <div class="mdc-button__ripple"></div>
-                                <span class="mdc-button__label">Action 1</span>
-                            </button>
-                            <button class="mdc-button mdc-card__action mdc-card__action--button">
-                                <div class="mdc-button__ripple"></div>
-                                <span class="mdc-button__label">Action 2</span>
-                            </button>
-                        </div>
-                        <div class="mdc-card__action-icons"> -->
-                            <!-- <span class="material-icons">add_shopping_cart</span> -->
                             <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon product__cart-icon-add product__cart-icon-add_active" title="Add to cart">add_shopping_cart</button>
                             <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon product__cart-icon-remove" title="Remove from cart">remove_shopping_cart</button>
-                            <!-- <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon" title="Share">share</button> -->
-                            <!-- <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon" title="More options">more_vert</button> -->
+
                         </div>
                     </div>
                 </div>
             </template>
             <template id="categoryTemp">
-                <!-- <div class="mdc-form-field mdc-form-field--nowrap">
-                    <div class="mdc-checkbox">
-                        <input type="checkbox" class="filters__category-input mdc-checkbox__native-control" id="" />
-                        <div class="mdc-checkbox__background">
-                            <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                                <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                            </svg>
-                            <div class="mdc-checkbox__mixedmark"></div>
-                        </div>
-                        <div class="mdc-checkbox__ripple"></div>
-                    </div>
-                    <label class="filters__category-label" for=""></label>
-                </div> -->
                 <input class="filters__category-input" type="checkbox" name="">
                 <label class="filters__category-label" for=""></label><br>
             </template>
@@ -247,7 +207,7 @@
     <!-- <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script> -->
     <script>
         const textField = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
-        const helperText = new mdc.textField.MDCTextFieldHelperText(document.querySelector('.mdc-text-field-helper-text'));
+        // const helperText = new mdc.textField.MDCTextFieldHelperText(document.querySelector('.mdc-text-field-helper-text'));
     </script>
 </body>
 
