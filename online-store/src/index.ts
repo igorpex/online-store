@@ -85,8 +85,6 @@ function addFiltersListeners() {
     const yearSlider = document.querySelector('.filters__year-range') as Slider;
     yearSlider.noUiSlider.on('change', (values: [], handle: number) => handleYearSliderChange(values, handle));
 
-
-
     const sortButtons = document.querySelectorAll('.sort__buttons');
     sortButtons.forEach(button => button.addEventListener('click', e => handleSort(e)));
 
@@ -104,31 +102,11 @@ function addFiltersListeners() {
 
     const shippingInput = document.querySelector('.filters__shipping-input');
     shippingInput?.addEventListener('change', (e) => handleShippingFilter(e));
-
-    // const yearSlider = document.querySelector('.filters__price-range') as Slider;
-    // yearSlider.noUiSlider.on('change', (values: [], handle: number) => handleYearSliderChange(values, handle));
-
 }
 
 function saveAllProducts(productList: Product[]) {
     localStorage.setItem("productList", JSON.stringify(productList));
 }
-
-// function addStorageListener() {
-//     window.addEventListener('storage', e => processStorageUpdates(e))
-// };
-
-// function processStorageUpdates(e: StorageEvent) {
-//     console.log('storage event', e);
-// }
-
-// function initFilter(productRanges) {
-
-// };
-
-// function initFilter(productRanges: ProductRanges) {
-// };
-
 
 async function start(e: Event) {
     const productList = await getProducts();
