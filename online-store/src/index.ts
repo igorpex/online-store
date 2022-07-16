@@ -36,12 +36,9 @@ function findProductRanges(productList: Product[]) {
     let maxCount = Math.max(...counts);
     let minYear = Math.min(...years);
     let maxYear = Math.max(...years);
-    console.log('minPrice: ', minPrice);
-    console.log('maxPrice: ', maxPrice);
 
     const colorsArr = productList.map(product => product.colors).flat();
     const colors = new Set(colorsArr);
-    console.log('###colors: ', colors);
 
     const categoriesArr = productList.map(product => product.category).flat();
     const categories = new Set(categoriesArr);

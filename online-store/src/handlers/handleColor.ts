@@ -35,8 +35,6 @@ export function handleColorFilter(e: Event) {
     const filteredProducts = getFilteredProducts();
     const sortedPoducts = getSortedProducts(filteredProducts, sortSettings);
 
-    // drawFilters()
-    console.log('filteredProducts Length:', filteredProducts.length);
     // drawProducts()
     drawProducts(sortedPoducts);
 

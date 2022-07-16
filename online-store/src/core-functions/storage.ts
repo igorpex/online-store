@@ -3,9 +3,6 @@ import { SliderFilter } from '../handlers/handleSliders';
 
 
 export class StorageService {
-    // static getProductRanges(productList: import("../interfaces/api").Product[]) {
-    //     throw new Error('Method not implemented.');
-    // }
 
     static getFilter() {
         let filter;
@@ -45,10 +42,8 @@ export class StorageService {
     }
 
     static getSliderFilterByName(filterName: string) {
-        console.log('filterName:', filterName);
         try {
             const sliderFilterByName = JSON.parse(localStorage.getItem('sliderFilter')!)[filterName];
-            console.log('sliderFilterByName: ', sliderFilterByName)
             return sliderFilterByName ? sliderFilterByName : new Object();
         } catch {
             const sliderFilterByName = new Object();
@@ -58,8 +53,6 @@ export class StorageService {
 
     static setSliderFilterByName({ sliderName, values }: SliderFilter) {
         let sliderFilter = this.getSliderFilter();
-        // Check filter exist in local storage, if not, make empty object.
-        // if (sliderFilter === null || sliderFilter === undefined) { sliderFilter = {} };
         sliderFilter[sliderName] = values;
         localStorage.setItem('sliderFilter', JSON.stringify(sliderFilter));
     }
@@ -97,15 +90,6 @@ export class StorageService {
 
     static setProductRanges(productRanges: ProductRanges) {
         localStorage.setItem('productRanges', JSON.stringify(productRanges));
-        // const categories = productRanges.categories;
-        // const companies = productRanges.companies;
-        // const colors: Set<string> = productRanges.colors;
-        // const { minPrice, maxPrice } = productRanges.prices;
-
-        // localStorage.setItem('categories', JSON.stringify(Array.from(categories)));
-        // localStorage.setItem('companies', JSON.stringify(Array.from(companies)));
-        // localStorage.setItem('colors', JSON.stringify(Array.from(colors)));
-        // localStorage.setItem('productRanges', JSON.stringify(productRanges));
     }
 
     static getSearchFilter() {

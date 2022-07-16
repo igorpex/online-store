@@ -54,24 +54,19 @@ function handleFilterChange({ changedField, item, value }: FilterChange) {
     updateFilterState(changedField, item, value);
     const filteredProducts = getFilteredProducts();
     // drawFilters()
-    console.log('filteredProducts Length:', filteredProducts.length);
     drawProducts(filteredProducts);
 }
 
 function handleCategoryFilter(e: Event) {
-    console.log('handleCategoryFilter: event target: ', e.target);
     const checked = (e.target as HTMLInputElement).checked;
     let category = (e.target as HTMLButtonElement).dataset.category!;
     handleFilterChange({ changedField: 'categories', item: category, value: checked })
-    console.log("is checked: ", checked);
 }
 
 function handleCompanyFilter(e: Event) {
-    console.log('handleCompanyFilter: event target: ', e.target);
     const checked = (e.target as HTMLInputElement).checked;
     let company = (e.target as HTMLButtonElement).dataset.company!;
     handleFilterChange({ changedField: 'companies', item: company, value: checked })
-    console.log("is checked: ", checked);
 }
 
 export {

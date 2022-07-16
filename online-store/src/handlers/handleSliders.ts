@@ -15,12 +15,9 @@ export interface SliderFilter {
 }
 
 function updateSliderFiltersState({ sliderName, values }: SliderFilter) {
-    // console.log('updateFilterState:changedField: ', changedField, 'values: ', values, 'handle: ', handle);
-
     let sliderFilter = JSON.parse(localStorage.getItem('sliderFilters')!);
     // Check filter exist in local storage, if not, make empty object.
     if (sliderFilter === null || sliderFilter === undefined) { sliderFilter = {} };
-    console.log('sliderFilter after it is undefined:', sliderFilter);
     sliderFilter[sliderName] = values;
     localStorage.setItem('sliderFilter', JSON.stringify(sliderFilter));
 }
@@ -30,30 +27,23 @@ function handleSliderFiltersChange({ sliderName, values, handle }: SliderFilterC
     StorageService.setSliderFilterByName({ sliderName, values });
     const filteredProducts = getFilteredProducts();
     // drawFilters()
-    console.log('filteredProducts Length:', filteredProducts.length);
     drawProducts(filteredProducts);
 }
 
 function handlePriceSliderChange(values: [], handle: number) {
     const valuesDivs = document.querySelectorAll('.filters__price-value');
-    // console.log('values change:', values);
-    // console.log('handle change:', handle);
     valuesDivs[handle].innerHTML = `${values[handle] / 100}`;
     handleSliderFiltersChange({ sliderName: 'price', values, handle })
 }
 
 function handleCountSliderChange(values: [], handle: number) {
     const valuesDivs = document.querySelectorAll('.filters__count-value');
-    // console.log('values change:', values);
-    // console.log('handle change:', handle);
     valuesDivs[handle].innerHTML = `${Math.trunc(values[handle])}`;
     handleSliderFiltersChange({ sliderName: 'count', values, handle })
 }
 
 function handleYearSliderChange(values: [], handle: number) {
     const valuesDivs = document.querySelectorAll('.filters__year-value');
-    // console.log('values change:', values);
-    // console.log('handle change:', handle);
     valuesDivs[handle].innerHTML = `${Math.trunc(values[handle])}`;
     handleSliderFiltersChange({ sliderName: 'year', values, handle })
 }

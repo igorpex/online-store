@@ -17,7 +17,6 @@ export function handleResetFilters() {
     StorageService.resetSliderFilter();
 
     const productRanges = StorageService.getProductRanges();
-    console.log('productRanges:', productRanges);
     StorageService.initSliderFilter(productRanges);
     // drawFilters(productRanges);
     const priceSlider = document.querySelector('.filters__price-range') as Slider;

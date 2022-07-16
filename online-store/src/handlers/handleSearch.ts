@@ -5,7 +5,6 @@ import { getFilteredProducts } from '../core-functions/filterProducts';
 import { getSortedProducts } from '../core-functions/sortProducts';
 import { StorageService } from '../core-functions/storage';
 export function handleSearchFilter(e: Event) {
-    console.log('handleSearchFilter: event: ', e);
     let searchValue;
     if ((e.target as HTMLElement).classList.contains("filters__search-clear")) {
         searchValue = ''

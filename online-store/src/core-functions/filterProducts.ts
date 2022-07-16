@@ -23,7 +23,6 @@ function filterProducts(productList: Product[], filter: FilterParams, sliderFilt
     if (Array.isArray(filter.categories)) { categories = filter.categories } else { categories = new Array() };
     if (Array.isArray(filter.companies)) { companies = filter.companies } else { companies = new Array() };
     if (Array.isArray(filter.colors)) { colors = filter.colors } else { colors = new Array() };
-    // console.log('sliderFilter:', sliderFilter);
     let filtered = productList
         //search
         .filter(product => {
@@ -31,10 +30,7 @@ function filterProducts(productList: Product[], filter: FilterParams, sliderFilt
                 const searchFilter = StorageService.getSearchFilter();
                 const searchValue = searchFilter.trim().toLowerCase();
                 const name = product.name.toLowerCase();
-                console.log('searchFilter in filterProducts.ts:', searchFilter)
                 if (searchFilter === '') { return true }
-                // searchValue = searchValue.toLowerCase();
-                console.log('name.search(searchValue)`):', name.search(searchValue));
                 if (name.search(searchValue) >= 0) {
                     return true
                 } else return false
@@ -121,7 +117,6 @@ export function getFilteredProducts() {
     const products = JSON.parse(localStorage.getItem('productList')!);
     let filter = JSON.parse(localStorage.getItem('filter')!);
     let sliderFilter = JSON.parse(localStorage.getItem('sliderFilter')!);
-    // if (filter === null || filter == undefined) { filter = {} };
     let filteredProducts = filterProducts(products, filter, sliderFilter);
     return filteredProducts;
 }
