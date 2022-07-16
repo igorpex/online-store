@@ -7,6 +7,8 @@ import { updateSearchFilter } from './filters/updateSearchFilter';
 import { updatePriceFilter } from './sliderFilters/updatePriceFilter';
 import { updateCountFilter } from './sliderFilters/updateCountFilter';
 import { updateYearFilter } from './sliderFilters/updateYearFilter';
+import { updatePopularFilter } from './filters/updatePopularFilter';
+import { updateShippingFilter } from './filters/updateShippingFilter';
 
 export function updateFilters() {
     const filteredCategories = StorageService.getFilterByName('categories');
@@ -19,6 +21,8 @@ export function updateFilters() {
     const maxCount = StorageService.getSliderFilterByName('count')[1];
     const minYear = StorageService.getSliderFilterByName('year')[0];
     const maxYear = StorageService.getSliderFilterByName('year')[1];
+    const popular = StorageService.getFilterByName('popular');
+    const shipping = StorageService.getFilterByName('shipping');
 
     updateSearchFilter(searchValue);
     updateCompanyFilter(Array.from(filteredCompanies));
@@ -27,4 +31,6 @@ export function updateFilters() {
     updatePriceFilter(Number(minPrice), Number(maxPrice));
     updateCountFilter(Number(minCount), Number(maxCount));
     updateYearFilter(Number(minYear), Number(maxYear));
+    updatePopularFilter(popular);
+    updateShippingFilter(shipping);
 }

@@ -126,14 +126,15 @@ body {
     width: 150px;
 }
 
-.filters__category-container,
+/* .filters__category-container,
 .filters__company-container,
 .filters__price-container,
 .filters__year-container,
 .filters__count-container,
 .filters__search-container,
 .filters__color-container,
-.filters__reset-container {
+.filters__reset-container, */
+.filters__container {
     border: 1px solid green;
     border-radius: 4px;
     padding: 5px;
@@ -164,7 +165,9 @@ body {
   } */
 
 .filters__category-label,
-.filters__company-label {
+.filters__company-label,
+.filters__popular-label,
+.filters__shipping-label {
     display: inline-block;
     background: #f2f2f2;
     border-radius: 0.7rem;
@@ -190,18 +193,24 @@ body {
 }
 
 .filters__category-label:hover,
-.filters__company-label:hover {
+.filters__company-label:hover,
+.filters__popular-label:hover,
+.filters__shipping-label:hover {
     border-color: silver;
     transform: scale(1.1);
 }
 
 .filters__category-input,
-.filters__company-input {
+.filters__company-input,
+.filters__popular-input,
+.filters__shipping-input {
     display: none
 }
 
 .filters__category-input:checked+.filters__category-label,
-.filters__company-input:checked+.filters__company-label {
+.filters__company-input:checked+.filters__company-label,
+.filters__popular-input:checked+.filters__popular-label,
+.filters__shipping-input:checked+.filters__shipping-label {
     background-color: lightgreen;
     border-color: silver;
     /* font-weight: bold; */

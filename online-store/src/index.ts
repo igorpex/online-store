@@ -22,6 +22,8 @@ import { updateCartIcon } from './view/updateCartIcon';
 import { handleResetFilters } from './handlers/handleResetFilters';
 import { handleResetAll } from './handlers/handleResetAll';
 import { updateSort } from './view/updateSort';
+import { handlePopularFilter } from './handlers/handlePopularFilter';
+import { handleShippingFilter } from './handlers/handleShippingFilter';
 
 
 function findProductRanges(productList: Product[]) {
@@ -96,6 +98,12 @@ function addFiltersListeners() {
 
     const resetAllButton = document.querySelector('.filters__all-reset-button');
     resetAllButton?.addEventListener('click', () => handleResetAll());
+
+    const popularInput = document.querySelector('.filters__popular-input');
+    popularInput?.addEventListener('change', (e) => handlePopularFilter(e));
+
+    const shippingInput = document.querySelector('.filters__shipping-input');
+    shippingInput?.addEventListener('change', (e) => handleShippingFilter(e));
 
     // const yearSlider = document.querySelector('.filters__price-range') as Slider;
     // yearSlider.noUiSlider.on('change', (values: [], handle: number) => handleYearSliderChange(values, handle));

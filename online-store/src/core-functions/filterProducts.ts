@@ -5,6 +5,8 @@ export interface FilterParams {
     categories: string[];
     companies: string[];
     colors: string[];
+    popular?: boolean[];
+    shipping?: boolean[];
 }
 
 export interface SliderFilterParams {
@@ -94,6 +96,22 @@ function filterProducts(productList: Product[], filter: FilterParams, sliderFilt
                 } else return false
             } catch {
                 return true
+            }
+        })
+        //filter popular
+        .filter(product => {
+            if (!filter['popular'] || filter['popular'][0] === false) {
+                return true;
+            } else {
+                if (product['popular']) { return true } else { return false }
+            }
+        })
+        //filter shipping
+        .filter(product => {
+            if (!filter['shipping'] || filter['shipping'][0] === false) {
+                return true;
+            } else {
+                if (product['shipping']) { return true } else { return false }
             }
         })
     return filtered;

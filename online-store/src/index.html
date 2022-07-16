@@ -29,78 +29,88 @@
                 </section>
             </div>
         </header>
-
-        <div class="filters">
-            <div class="filters__search-container">
-                <!-- <h2 class="mdc-typography--subtitle1 filters__title">Search</h2> -->
-                <div class="filters__search">
-                    <!-- <h2 class="mdc-typography--subtitle1 filters__title">Search:</h2> -->
-                    <label class="mdc-text-field  mdc-text-field--outlined mdc-text-field--with-leading-icon mdc-text-field--with-trailing-icon">
-
-                        <!-- <span class="mdc-text-field__ripple"></span> -->
-                        <span class="mdc-floating-label" id="my-label-id">Search</span>
-                        <i class="material-icons mdc-text-field__icon filters__search-icon">search</i>
-                        <input class="mdc-text-field__input mdc-text-field--filled filters__search-input" autofocus autocomplete="off" type="text" aria-labelledby="my-label-id" placeholder="Search">
-                        <i class="material-icons mdc-text-field__icon filters__search-clear" tabindex="0" role="button">clear</i>
-                        <!-- <span class="mdc-line-ripple"></span> -->
-                    </label>
-                    <!-- <input class="filters__search-input" type="search" name="search" id="search"> -->
-                </div>
-            </div>
-            <div class="filters__category-container">
-                <h2 class="mdc-typography--subtitle1 filters__title">Category</h2>
-                <div class="filters__category">
-                </div>
-            </div>
-            <div class="filters__company-container">
-                <h2 class="mdc-typography--subtitle1 filters__title">Company</h2>
-                <div class="filters__company">
-                </div>
-            </div>
-            <div class="filters__color-container">
-                <h2 class="mdc-typography--subtitle1 filters__title">Colors</h2>
-                <div class="filters__color"></div>
-            </div>
-            <div class="filters__price-container">
-                <h2 class="mdc-typography--subtitle1 filters__title">Price</h2>
-                <div class="filters__price">
-                    <div class="filters__price-values">
-                        <div class="filters__price-value"></div>
-                        <div class="filters__price-value"></div>
-                    </div>
-                    <div id="filters__price-range" class="filters__price-range"></div>
-                </div>
-
-
-            </div>
-            <div class="filters__year-container">
-                <h2 class="mdc-typography--subtitle1 filters__title">Year</h2>
-                <div class="filters__year">
-                    <div class="filters__year-values">
-                        <div class="filters__year-value"></div>
-                        <div class="filters__year-value"></div>
-                    </div>
-                    <div id="filters__year-range" class="filters__year-range"></div>
-                </div>
-            </div>
-            <div class="filters__count-container">
-                <h2 class="mdc-typography--subtitle1 filters__title">Count</h2>
-                <div class="filters__count">
-                    <div class="filters__count-values">
-                        <div class="filters__count-value"></div>
-                        <div class="filters__count-value"></div>
-                    </div>
-                    <div id="filters__count-range" class="filters__count-range"></div>
-                </div>
-            </div>
-            <div class="filters__reset-container">
-                <h2 class="mdc-typography--subtitle1 filters__title">Reset</h2>
-                <button class="filters__filters-reset-button">Reset filters</button>
-                <button class="filters__all-reset-button">Reset all</button>
-            </div>
-        </div>
-
         <div class="main">
+            <div class="filters">
+                <div class="filters__container filters__search-container">
+                    <!-- <h2 class="mdc-typography--subtitle1 filters__title">Search</h2> -->
+                    <div class="filters__search">
+                        <!-- <h2 class="mdc-typography--subtitle1 filters__title">Search:</h2> -->
+                        <label class="mdc-text-field  mdc-text-field--outlined mdc-text-field--with-leading-icon mdc-text-field--with-trailing-icon">
+
+                            <!-- <span class="mdc-text-field__ripple"></span> -->
+                            <span class="mdc-floating-label" id="my-label-id">Search</span>
+                            <i class="material-icons mdc-text-field__icon filters__search-icon">search</i>
+                            <input class="mdc-text-field__input mdc-text-field--filled filters__search-input" autofocus autocomplete="off" type="text" aria-labelledby="my-label-id" placeholder="Search">
+                            <i class="material-icons mdc-text-field__icon filters__search-clear" tabindex="0" role="button">clear</i>
+                            <!-- <span class="mdc-line-ripple"></span> -->
+                        </label>
+                        <!-- <input class="filters__search-input" type="search" name="search" id="search"> -->
+                    </div>
+                </div>
+                <div class="filters__container filters__category-container">
+                    <h2 class="mdc-typography--subtitle1 filters__title">Category</h2>
+                    <div class="filters__category">
+                    </div>
+                </div>
+                <div class="filters__container filters__company-container">
+                    <h2 class="mdc-typography--subtitle1 filters__title">Company</h2>
+                    <div class="filters__company">
+                    </div>
+                </div>
+                <div class="filters__container filters__color-container">
+                    <h2 class="mdc-typography--subtitle1 filters__title">Colors</h2>
+                    <div class="filters__color"></div>
+                </div>
+                <div class="filters__container filters__price-container">
+                    <h2 class="mdc-typography--subtitle1 filters__title">Price</h2>
+                    <div class="filters__price">
+                        <div class="filters__price-values">
+                            <div class="filters__price-value"></div>
+                            <div class="filters__price-value"></div>
+                        </div>
+                        <div id="filters__price-range" class="filters__price-range"></div>
+                    </div>
+                </div>
+                <div class="filters__container filters__year-container">
+                    <h2 class="mdc-typography--subtitle1 filters__title">Year</h2>
+                    <div class="filters__year">
+                        <div class="filters__year-values">
+                            <div class="filters__year-value"></div>
+                            <div class="filters__year-value"></div>
+                        </div>
+                        <div id="filters__year-range" class="filters__year-range"></div>
+                    </div>
+                </div>
+                <div class="filters__container filters__count-container">
+                    <h2 class="mdc-typography--subtitle1 filters__title">Count</h2>
+                    <div class="filters__count">
+                        <div class="filters__count-values">
+                            <div class="filters__count-value"></div>
+                            <div class="filters__count-value"></div>
+                        </div>
+                        <div id="filters__count-range" class="filters__count-range"></div>
+                    </div>
+                </div>
+                <div class="filters__container filters__popular-container">
+                    <h2 class="mdc-typography--subtitle1 filters__title">Популярность</h2>
+                    <div class="filters__popular">
+                        <input class="filters__popular-input" type="checkbox" id="filters__popular-input" name="popular">
+                        <label class="filters__popular-label" for="filters__popular-input">Популярные</label>
+                    </div>
+                </div>
+                <div class="filters__container filters__shipping-container">
+                    <h2 class="mdc-typography--subtitle1 filters__title">Доставка</h2>
+                    <div class="filters__shipping">
+                        <input class="filters__shipping-input" type="checkbox" id="filters__shipping-input" name="shipping">
+                        <label class="filters__shipping-label" for="filters__shipping-input">Бесплатная</label>
+                    </div>
+                </div>
+                <div class="filters__container filters__reset-container">
+                    <h2 class="mdc-typography--subtitle1 filters__title">Reset</h2>
+                    <button class="filters__filters-reset-button">Reset filters</button>
+                    <button class="filters__all-reset-button">Reset all</button>
+                </div>
+            </div>
             <div class="sort">
                 <div class="sort__buttons">
                     <h2 class="mdc-typography--subtitle1 filters__title">Sort</h2>
